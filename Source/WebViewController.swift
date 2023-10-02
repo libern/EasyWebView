@@ -29,7 +29,7 @@ open class WebViewController: UIViewController {
                 fatalError("URL can't be nil")
             }
             var request = URLRequest(url: url)
-            request.addValue("skey=skeyValue", forHTTPHeaderField: "Cookie")
+            // request.addValue("skey=skeyValue", forHTTPHeaderField: "Cookie")
             webView.load(request)
         }
     }
@@ -74,16 +74,16 @@ open class WebViewController: UIViewController {
     public var alertCancelTitle: String = WebViewConfig.alertCancelTitle
 
     public lazy private(set) var webView: WKWebView = {
-        let userContentController = WKUserContentController()
-        let cookieScript = WKUserScript(source: "document.cookie = 'skey=skeyValue';",
-                                        injectionTime: .atDocumentStart, forMainFrameOnly: false)
-        userContentController.addUserScript(cookieScript)
+        // let userContentController = WKUserContentController()
+        // let cookieScript = WKUserScript(source: "document.cookie = 'skey=skeyValue';",
+        //                                 injectionTime: .atDocumentStart, forMainFrameOnly: false)
+        // userContentController.addUserScript(cookieScript)
 
         let configuration = WKWebViewConfiguration()
         configuration.preferences.minimumFontSize = 1
         configuration.preferences.javaScriptEnabled = true
         configuration.allowsInlineMediaPlayback = true
-        configuration.userContentController = userContentController
+        // configuration.userContentController = userContentController
 
         let webView = WKWebView(frame: .zero, configuration: configuration)
         webView.allowsBackForwardNavigationGestures = true
